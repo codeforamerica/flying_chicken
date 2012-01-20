@@ -1,0 +1,9 @@
+{
+  "name": "coder_sounds",
+  "version": "1.0.0",
+  "dependencies": {
+    "coffee-script": ">= 1.2.0",
+    "yaml": ">= 0.2",
+    "zappa": ">= 0.3"
+  }
+}
