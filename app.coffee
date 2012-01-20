@@ -1,4 +1,12 @@
-require('zappa') ->
+###
+  Distributed Code for America coder sounds.
+
+    $ coffee app.coffee
+###
+
+PORT = process.argv[2] or 3000
+
+require('zappa') PORT, ->
   @use 'bodyParser', 'methodOverride', @app.router, 'static'
   @enable 'default layout', 'serve jquery', 'serve sammy', 'minify'
   zap = this
