@@ -8,14 +8,23 @@ PORT = process.argv[2] or 3000
 
 require('zappa') PORT, ->
   @use 'bodyParser', 'methodOverride', @app.router, 'static'
-  @enable 'default layout', 'serve jquery', 'serve sammy', 'minify'
+  # Cache static content for 10 minutes.
+  @use @express.static "#{@root}/public", maxAge: 600000
+  @enable 'serve jquery', 'serve sammy', 'minify'
   zap = this
 
   @configure
     development: => @use errorHandler: {dumpExceptions: on}
     production: => @use 'errorHandler'
 
-  @get '/': -> @render 'index'
+  @get '/': ->
+    @scripts = [
+      '/socket.io/socket.io', 
+      '/zappa/jquery',
+      '/zappa/zappa',
+      '/shared', '/index'
+    ]
+    @render layout: {title: 'Coder Sounds'}
 
   @get '/posthook': ->
     # @params.id
@@ -44,9 +53,9 @@ require('zappa') PORT, ->
         # show latest commit info
       $('body').append "new commit: #{@data.commit_name}"
 
-  @view index: ->
-    @title = 'Coder Sounds'
-    @scripts = ['/socket.io/socket.io', '/zappa/jquery',
-        '/zappa/zappa', '/shared', '/index']
-
-    h1 @title
+  #@view index: ->
+    
+    #@title = 'Coder Sounds'
+    #@scripts = ['/socket.io/socket.io', '/zappa/jquery',
+    #    '/zappa/zappa', '/shared', '/index']
+    #h1 @title
