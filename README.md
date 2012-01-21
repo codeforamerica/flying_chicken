@@ -7,7 +7,9 @@
  * Coffeescript
  * Node
  * Zappa
- * Socket.io
+     * Express
+     * Socket.io
+     * CoffeeKup
  
 ## Install and Run
 
