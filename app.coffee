@@ -6,6 +6,8 @@
 
 PORT = process.argv[2] or 3000
 
+yamlish = require 'yamlish'
+request = require 'request'
 require('zappa') PORT, ->
   @use 'bodyParser', 'methodOverride', @app.router, 'static'
   @enable 'default layout', 'serve jquery', 'serve sammy', 'minify'
@@ -17,16 +19,23 @@ require('zappa') PORT, ->
 
   @get '/': -> @render 'index'
 
-  @get '/posthook': ->
-    # @params.id
+  @post '/posthook': ->
 
     # parse github hook
-    #
-    # grab the yaml list
-    #
-    # emit
+    payload = JSON.parse(@.body.payload)
 
-    zap.io.sockets.emit 'newcommit', {commit_name: "TEST NAME"}
+    console.log payload
+    # grab the yaml list
+
+
+    request "https://raw.github.com/codeforamerica/cfa_coder_sounds/master/list.yml" , (error, res, body) ->
+        yaml_data = yamlish.decode(body);
+        #console.log "yaml", yaml_data
+
+        base_sound_url = "https://github.com/codeforamerica/cfa_coder_sounds/blob/master/sounds/"
+
+        # emit
+        zap.io.sockets.emit "newcommit", {commit:commit, repository:payload.repository, sound_url:base_sound_url+yaml_data.users[commit.author.username]+"?raw=true"} for commit in payload.commits
     @send 'ok'
 
   @on connection: ->
@@ -42,11 +51,13 @@ require('zappa') PORT, ->
         # play sound
         # play commit via google translate
         # show latest commit info
-      $('body').append "new commit: #{@data.commit_name}"
+        $('div#audio').html "<audio src='#{@data.sound_url}' autoplay controls></audio>"
+        $('div#message').html "#{@data.commit.author.username} committed to #{@data.repository.name} <br/>"
 
   @view index: ->
     @title = 'Coder Sounds'
-    @scripts = ['/socket.io/socket.io', '/zappa/jquery',
-        '/zappa/zappa', '/shared', '/index']
+    @scripts = ['/socket.io/socket.io', '/zappa/jquery', '/zappa/zappa', '/index']
 
+    div id:'audio'
+    div id:'message'
     h1 @title
