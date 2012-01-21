@@ -51,7 +51,9 @@ html class: "no-js", lang: "en", ->
       img src: "/img/cfa_logo.png",
     img ".mainGraphic", src: "/img/mainGraphic.png",
     div "#footer", ->
-      div "#footerbox", -> ""
+      div "#footerbox", ->
+        div "#audio", -> ""
+        div "#message", -> ""
   
     # JavaScript at the bottom for fast page loading.  
     if @scripts
