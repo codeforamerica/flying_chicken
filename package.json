@@ -4,6 +4,8 @@
   "dependencies": {
     "coffee-script": ">= 1.2.0",
     "yaml": ">= 0.2",
-    "zappa": ">= 0.3"
+    "zappa": ">= 0.3",
+    "request": ">= 2.9.100",
+    "yamlish": ">= 0.0.2"
   }
 }
