@@ -56,10 +56,6 @@ html class: "no-js", lang: "en", ->
         div "#message", -> ""
   
     # JavaScript at the bottom for fast page loading.  
-    if @scripts
-      for s in @scripts
-        script src: s + '.js'
-    script(src: @script + '.js') if @script
   
     # Grab Google CDN's jQuery, with a protocol relative URL.
     script src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
@@ -68,6 +64,10 @@ html class: "no-js", lang: "en", ->
   
     # Additional JavaScript libraries and plugins...
     script src: "/js/libs/bootstrap-dropdown.js"
+    script src: "/js/libs/underscore.js"
+    script src: "/socket.io/socket.io.js"
+    script src: "/js/zappa.js"
+    script src: "/js/application.js"
   
     # mathiasbynens.be/notes/async-analytics-snippet
     # Change UA-XXXXX-X to be your site's Google Analytics ID.
