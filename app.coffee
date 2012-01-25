@@ -3,10 +3,23 @@
 
     $ coffee app.coffee
 ###
-
+fs      = require 'fs'
 request = require 'request'
 yamlish = require 'yamlish'
 zappa   = require 'zappa'
+
+# Configuration
+try
+  config = yamlish.decode( fs.readFileSync(__dirname + "/config.yml").toString() )
+catch error
+  console.log error
+  console.log "File config.yml not found or is invalid.  Try: `cp config.yml.sample config.json`"
+  process.exit(1)
+
+# Make sure that our config is properly setup (using config.yml or Heroku
+config.github.access_token = process.env.GITHUB_ACCESS_TOKEN || config.github.access_token
+if !config.github.access_token
+  throw "You need to set an access token either in config.yml or 'heroku config:add GITHUB_ACCESS_TOKEN=#####'"
 
 # instantiate our repos
 repos = require './objects/Repos'

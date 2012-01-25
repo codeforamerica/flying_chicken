@@ -1,7 +1,5 @@
-{
-  "github": {
-    "account": "codeforamerica"
-    "type": "org"
-    "access_token": ""
-  }
-}
+---
+  github:
+    account: codeforamerica
+    type: org
+    access_token:
