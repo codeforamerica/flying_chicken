@@ -8,6 +8,9 @@ request = require 'request'
 yamlish = require 'yamlish'
 zappa   = require 'zappa'
 
+# instantiate our repos
+repos = require './objects/Repos'
+
 PORT = process.argv[2] or 3000
 
 zappa PORT, ->
