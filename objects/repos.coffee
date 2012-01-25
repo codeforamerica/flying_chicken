@@ -8,13 +8,60 @@
 # Pubsubhubbub:
 #    http://developer.github.com/v3/repos/hooks/#pubsubhubbub
 #
+request = require 'request'
 
 class Repos
 
-  constructor: ->
-  
-  
+  constructor: (@config) ->
+    # setup and make an initial fetch of list of repos
+    @list = []
+    #@refreshRepos()
+    
+    @subscribe("flying_chicken")
+    
+    
+  #
+  # Fetches the list of repositories and saves them to @list
+  #
+  refreshRepos: ->
+    # Request the repo list      
+    request "https://api.github.com/#{@config.github.type}s/#{@config.github.account}/repos?access_token=#{@config.github.access_token}", (error, res, body) =>
+      fullRepos = JSON.parse(body)      
+      
+      newList = []
+      
+      for fullRepo in fullRepos
+        newList.push fullRepo.name
+      
+      
+      # Compare our new list to our old list
+      # in case we want to push changes to the client
+      deletedRepos = arraySubtract @list, newList
+      addedRepos = arraySubtract newList, @list
+      
+      @list = newList
+    
+      console.log "Added #{addedRepos.length} repositories; deleted #{deletedRepos.length} repositories; #{@list.length} total repositories" 
 
+  subscribe: (repo) ->
+    POST = {
+      "url"  : "https://api.github.com/hub?access_token=#{@config.github.access_token}",
+      "form" : {
+        "hub.mode"     : "unsubscribe",
+        "hub.topic"    : "https://github.com/codeforamerica/flying_chicken/events/push",
+        "hub.callback" : "http://www.postbin.org/1ew79ca"
+      }
+    }
+  
+    request.post  POST, (error, res, body) =>
+      console.log body    
+
+#
+# Return the elements of arrayA - arrayB
+# (so elements in A that are NOT in B
+#
+arraySubtract = (a, b) -> 
+  a.filter( (i) -> !(b.indexOf(i) > -1) )
 
 #### Exports
 module.exports = Repos
