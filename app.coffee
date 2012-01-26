@@ -13,7 +13,7 @@ try
   config = yamlish.decode( fs.readFileSync(__dirname + "/config.yml").toString() )
 catch error
   console.log error
-  console.log "File config.yml not found or is invalid.  Try: `cp config.yml.sample config.json`"
+  console.log "File config.yml not found."
   process.exit(1)
 
 # Make sure that our config is properly setup (using config.yml or Heroku
