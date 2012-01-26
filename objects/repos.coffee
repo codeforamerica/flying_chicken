@@ -53,9 +53,12 @@ class Repos
       }
     }
     request postData, (error, res, body) =>
-      console.log body
-      console.log "Subscribed to the '#{repo}' repository."
-      # do nothing yet other than hope it worked  
+      # Empty body is success (oddly enough)
+      if !body
+        console.log "Subscribed to the '#{repo}' repository."
+        # do nothing yet other than hope it worked
+      else
+        console.log "Subscription to '#{repo}' FAILED"
 
 #
 # Return the elements of arrayA - arrayB
