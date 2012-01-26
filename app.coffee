@@ -21,6 +21,8 @@ config.github.access_token = process.env.GITHUB_ACCESS_TOKEN || config.github.ac
 if !config.github.access_token
   throw "You need to set an access token either in config.yml or 'heroku config:add GITHUB_ACCESS_TOKEN=#####'"
 
+console.log config
+
 # instantiate our repos
 repos = require './objects/repos'
 repos = new repos config

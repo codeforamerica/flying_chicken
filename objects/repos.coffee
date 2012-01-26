@@ -53,6 +53,7 @@ class Repos
       }
     }
     request postData, (error, res, body) =>
+      console.log body
       console.log "Subscribed to the '#{repo}' repository."
       # do nothing yet other than hope it worked  
 
