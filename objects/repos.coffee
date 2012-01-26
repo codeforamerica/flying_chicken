@@ -33,7 +33,6 @@ class Repos
       for fullRepo in fullRepos
         newList.push fullRepo.name
       
-      
       # Compare our new list to our old list
       # in case we want to push changes to the client
       deletedRepos = arraySubtract @list, newList
@@ -44,16 +43,20 @@ class Repos
       console.log "Added #{addedRepos.length} repositories; deleted #{deletedRepos.length} repositories; #{@list.length} total repositories" 
 
   subscribe: (repo) ->
-    POST = {
-      "url"  : "https://api.github.com/hub?access_token=#{@config.github.access_token}",
-      "form" : {
-        "hub.mode"     : "unsubscribe",
-        "hub.topic"    : "https://github.com/codeforamerica/flying_chicken/events/push",
-        "hub.callback" : "http://www.postbin.org/1ew79ca"
+    postData = {
+      "method" : "POST",
+      "url"  : "https://api.github.com/repos/#{@config.github.account}/#{repo}/hooks?access_token=#{@config.github.access_token}",
+      #"url"  : "http://www.postbin.org/1ew79ca",
+      "json" : {
+        "name": "web",
+        "active": true,
+        "config": {
+          "url": "http://something.com/webhook"
+        }
       }
     }
-  
-    request.post  POST, (error, res, body) =>
+    request postData, (error, res, body) =>
+      console.log res
       console.log body    
 
 #
