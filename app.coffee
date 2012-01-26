@@ -22,7 +22,7 @@ if !config.github.access_token
   throw "You need to set an access token either in config.yml or 'heroku config:add GITHUB_ACCESS_TOKEN=#####'"
 
 # instantiate our repos
-repos = require './objects/Repos'
+repos = require './objects/repos'
 repos = new repos config
 
 PORT = process.argv[2] or 3000
