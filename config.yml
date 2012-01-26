@@ -1,6 +1,8 @@
 ---
-  base_url: http://flyingchicken.herokuapp.com # No trailing slash!
+  # No trailing slash!
+  base_url: http://flyingchicken.herokuapp.com
   github:
     account: codeforamerica
     type: org
-    access_token:  # define this here or with 'heroku config:add GITHUB_ACCESS_TOKEN=....'
+    # define this here or with 'heroku config:add GITHUB_ACCESS_TOKEN=....'
+    access_token: 
