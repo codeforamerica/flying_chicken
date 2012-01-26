@@ -1,4 +1,5 @@
 ---
+  base_url: http://flyingchicken.herokuapp.com # No trailing slash!
   github:
     account: codeforamerica
     type: org

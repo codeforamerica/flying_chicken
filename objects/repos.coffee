@@ -48,13 +48,12 @@ class Repos
       "url"  : "https://api.github.com/hub?access_token=#{@config.github.access_token}",
       "form" : {
         "hub.mode" : "subscribe",
-        "hub.callback" : "http://www.postbin.org/1ew79ca",
+        "hub.callback" : "#{@config.base_url}/posthook",
         "hub.topic"    : "https://github.com/#{@config.github.account}/#{repo}/events/push",
       }
     }
     request postData, (error, res, body) =>
-      console.log res
-      console.log body    
+      # do nothing yet other than hope it worked  
 
 #
 # Return the elements of arrayA - arrayB
