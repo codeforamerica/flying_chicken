@@ -13,15 +13,13 @@ request = require 'request'
 class Repos
 
   constructor: (@config) ->
-    # setup and make an initial fetch of list of repos
+    # setup and make an initial fetch/subscribe of list of repos
     @list = []
-    #@refreshRepos()
-    
-    @subscribe("flying_chicken")
-    
+    @refreshRepos()    
     
   #
   # Fetches the list of repositories and saves them to @list
+  # Also subscribes to each one
   #
   refreshRepos: ->
     # Request the repo list      
@@ -37,6 +35,10 @@ class Repos
       # in case we want to push changes to the client
       deletedRepos = arraySubtract @list, newList
       addedRepos = arraySubtract newList, @list
+      
+      for addedRepo in addedRepos 
+        # subscribe those repos!
+        @subscribe(addedRepo)
       
       @list = newList
     
