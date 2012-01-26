@@ -45,14 +45,11 @@ class Repos
   subscribe: (repo) ->
     postData = {
       "method" : "POST",
-      "url"  : "https://api.github.com/repos/#{@config.github.account}/#{repo}/hooks?access_token=#{@config.github.access_token}",
-      #"url"  : "http://www.postbin.org/1ew79ca",
-      "json" : {
-        "name": "web",
-        "active": true,
-        "config": {
-          "url": "http://something.com/webhook"
-        }
+      "url"  : "https://api.github.com/hub?access_token=#{@config.github.access_token}",
+      "form" : {
+        "hub.mode" : "subscribe",
+        "hub.callback" : "http://www.postbin.org/1ew79ca",
+        "hub.topic"    : "https://github.com/#{@config.github.account}/#{repo}/events/push",
       }
     }
     request postData, (error, res, body) =>

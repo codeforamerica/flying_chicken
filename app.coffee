@@ -23,6 +23,7 @@ if !config.github.access_token
 
 # instantiate our repos
 repos = require './objects/Repos'
+repos = new repos config
 
 PORT = process.argv[2] or 3000
 

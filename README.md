@@ -11,6 +11,12 @@
      * Socket.io
      * CoffeeKup
  
+## Register app with Github
+1. Visit https://github.com/account/applications/new
+2. ?
+
+** Make sure you have the "repo" permission in your oAuth scope
+
 ## Install and Run
 
 1. Install Node
