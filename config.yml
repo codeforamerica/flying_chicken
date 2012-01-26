@@ -2,4 +2,4 @@
   github:
     account: codeforamerica
     type: org
-    access_token: 
+    access_token:  # define this here or with 'heroku config:add GITHUB_ACCESS_TOKEN=....'
