@@ -5,4 +5,9 @@
     account: codeforamerica
     type: org
     # define this here or with 'heroku config:add GITHUB_ACCESS_TOKEN=....'
-    access_token: 
+    access_token:
+  # Eggs are pushes that chicken should make to other services.  
+  # Associative array, key is arbitrary
+  eggs:
+    commitalization: http://commits.codeforamerica.org/committed
+    office_chicken: http://97.65.119.3:6178/receive_commit
