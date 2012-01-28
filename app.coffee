@@ -27,6 +27,10 @@ console.log config
 repos = require './objects/repos'
 repos = new repos config
 
+# Instatitate eggs
+eggs = require './objects/eggs'
+eggs = new eggs config
+
 PORT = process.argv[2] or 3000
 
 zappa PORT, ->
@@ -64,6 +68,9 @@ zappa PORT, ->
           repository: payload.repository,
           sound_url: sound_url
         }
+      
+      # Throw eggs
+      eggs.throw_eggs payload
     @send 'ok'
 
   @on connection: ->
