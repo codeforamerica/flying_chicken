@@ -1,4 +1,5 @@
 {
+  "use": "curl -v -X POST --data-urlencode payload@examples/payload.json http://localhost:3000/posthook && echo ''",
   "after": "dd96400d3feb7ac32377d6b5c5030ebb483b0949", 
   "before": "adb190fa251f9b083451286d7b18c09f73c2cae4", 
   "commits": [
