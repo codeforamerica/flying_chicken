@@ -10,4 +10,4 @@
   # Associative array, key is arbitrary
   eggs:
     commitalization: http://commits.codeforamerica.org/committed
-    office_chicken: http://97.65.119.3:6178/receive_commit
+    office_chicken: http://173.228.102.131:6178/receive_commit
