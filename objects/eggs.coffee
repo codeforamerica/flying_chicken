@@ -16,9 +16,11 @@ class Eggs
     postDataTemplate = {
       "method" : "POST",
       "form": {
-        "payload" : payload
+        "payload": JSON.stringify payload
       }
     }
+	
+    console.log payload
 
     # Go through eggs
     for name, egg of @config.eggs
@@ -27,7 +29,7 @@ class Eggs
         postData.url = egg
         request postData, (error, res, body) =>
           if true
-            console.log body
+            console.log error
             console.log "Egg delivered to '#{name}'."
             # do nothing yet other than hope it worked
           else
