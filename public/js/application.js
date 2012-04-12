@@ -16,7 +16,7 @@
         message = "" + username + " committed to " + repo;
         audio = function() {
           $('div#audio').append("<audio src='" + _this.data.sound_url + "' autoplay controls></audio>");
-          return $('audio').on('playing', function(event) {
+          return $('audio').on('ended', function(event) {
             var encoded, iframe, parent, remove_iframe, self, translate;
             self = $(this);
             parent = self.parent();
