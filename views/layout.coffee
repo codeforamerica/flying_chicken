@@ -45,10 +45,11 @@ html class: "no-js", lang: "en", ->
           ul ".secondary-nav", ->
             li ->
               a href: "http://github.com/codeforamerica/flying_chicken", -> "Github"
+    
+    img ".cornerBanner", src: "/img/cfa_flag.png",
   
     # Logo
     div "#logo", ->
-      img ".cornerBanner", src: "/img/cfa_flag.png",
       img ".mainGraphic", src: "/img/mainGraphic.png",
       div "#footer", ->
         div "#footerbox", ->
