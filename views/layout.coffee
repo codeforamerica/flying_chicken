@@ -50,8 +50,11 @@ html class: "no-js", lang: "en", ->
     div "#logo", ->
       img ".cornerBanner", src: "/img/cfa_flag.png",
     img ".mainGraphic", src: "/img/mainGraphic.png",
+        div "#footer", ->
+        	div"#footerbox", ->
         div "#audio", -> ""
         div "#message", -> ""
+      
   
     # JavaScript at the bottom for fast page loading.  
   
