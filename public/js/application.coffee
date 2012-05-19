@@ -12,7 +12,7 @@ zappa.run ->
     message = "#{username} committed to #{repo}"
     audio = =>
       $('div#audio').append "<audio src='#{@data.sound_url}' autoplay controls></audio>"
-      $('audio').on('playing', (event) ->
+      $('audio').on('ended', (event) ->
         self = $(this)
         parent = self.parent()
         encoded = encodeURIComponent(message.replace(/_/g, ' '))
