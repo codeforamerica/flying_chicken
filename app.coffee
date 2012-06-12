@@ -59,15 +59,15 @@ zappa PORT, ->
       base_sound_url = "https://github.com/codeforamerica/cfa_coder_sounds/blob/master/sounds/"
   
       # emit
-      # for commit, index in payload.commits
-      user_name = commit.author.username
-      sound_url = base_sound_url + yaml_data.users[user_name] + "?raw=true"
-      zap.io.sockets.emit "newcommit", {
-        commit: payload.commits.commit,
-        index: payload.commits.index,
-        repository: payload.repository,
-        sound_url: sound_url
-      }
+      for commit, index in payload.commits
+        user_name = commit.author.username
+        sound_url = base_sound_url + yaml_data.users[user_name] + "?raw=true"
+        zap.io.sockets.emit "newcommit", {
+          commit: commit,
+          index: index,
+          repository: payload.repository,
+          sound_url: sound_url
+        }
       
       # Throw eggs
       eggs.throw_eggs payload
