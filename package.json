@@ -1,6 +1,9 @@
 {
-  "name": "coder_sounds",
+  "name": "flying_chicken",
   "version": "1.0.0",
+    "engines": {
+      "node": "0.6.x"
+  },
   "dependencies": {
     "coffee-script": ">= 1.2.0",
     "underscore": ">= 1.3",
