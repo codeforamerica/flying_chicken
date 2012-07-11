@@ -36,25 +36,18 @@ html class: "no-js", lang: "en", ->
     # script src:"/js/libs/modernizr-2.0.6.js"
   
   body "#container", ->
-  
-    # Main nav, probably dont need
-    div ".topbar", ->
-      div ".fill", ->
-        div ".container", ->
-          a ".brand", href: "/", -> "Flying Chicken"
-          ul ".secondary-nav", ->
-            li ->
-              a href: "http://github.com/codeforamerica/flying_chicken", -> "Github"
     
-    img ".cornerBanner", src: "/img/cfa_flag.png",
+    a href: "https://github.com/codeforamerica/flying_chicken", ->
+      img ".cornerBanner", src: "/img/cfa_flag.png",
   
     # Logo
-    div "#logo", ->
+    div "#logo", -> 
       img ".mainGraphic", src: "/img/mainGraphic.png",
-      div "#footer", ->
-        div "#footerbox", ->
-          div "#audio", -> ""
-          div "#message", -> ""
+      
+    div "#footer", ->
+      div "#footerbox", ->
+        div "#audio", -> ""
+        div "#message", -> ""
   
     # JavaScript at the bottom for fast page loading.  
   
