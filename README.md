@@ -4,28 +4,22 @@
 
 ## Built with
 
- * Coffeescript
- * Node
- * Zappa
-     * Express
-     * Socket.io
-     * CoffeeKup
+ * [Coffeescript](http://coffeescript.org/)
+ * [Node](http://nodejs.org/)
+ * [Zappa](http://zappajs.org/)
  
-## Register app with Github
-1. Visit https://github.com/account/applications/new
-2. ?
+## Configuration and Deployment
 
-** Make sure you have the "repo" permission in your oAuth scope
+1. Run the follow to get a Github API Oath token: `curl -i -u "<USERNAME>:<PASS>" https://api.github.com/authorizations -d '{"scopes":["repo"]}'`
+2. You will get a JSON response; utilizing the token value run the following to set the Heroku value. `heroku config:add GITHUB_ACCESS_TOKEN=<TOKEN_VALUE>`
+3. Or use the token value in the `config.yml` (do not commit token!).
 
-## Install and Run
+## Run locally
 
-1. Install Node
-2. Install NPM
-3. `npm install`
-4. `coffee app.coffee`
-
-
-## Local Testing
+1. [Install homebrew](https://github.com/mxcl/homebrew/wiki/Installation)
+2. Install Node and NPM: `brew install node`
+3. Install packages: `npm install`
+4. Run server: `coffee app.coffee`
 
 To locally simulate a GitHub post-receive hook, enter this in your terminal while running locally :
 
