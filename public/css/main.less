@@ -35,6 +35,20 @@ img.cornerBanner {
 	margin: 0 0 0 0;
 	position: fixed;
 	z-index: 10001;
+	opacity: 0.6;
+}
+img.cornerBanner:hover {
+	opacity: 0.9;
+}
+
+/**
+ * Handle when screen is smaller than the logo.
+ */
+@media all and (max-width: 460px), (max-height: 460px) {
+  img.cornerBanner {
+    max-width: 30%;
+    max-height: 30%;
+  }
 }
 
 #logo {
