@@ -18,7 +18,9 @@
 1. [Install homebrew](https://github.com/mxcl/homebrew/wiki/Installation)
 2. Install Node and NPM: `brew install node`
 3. Install packages: `npm install`
-4. To run locally, set the config token value that was generated above in `config.yml` (do NOT commit token!).
+4. To run locally, set the token value that was generated above in one of two ways:
+    * (suggested) As an environment variable: `export GITHUB_ACCESS_TOKEN="<TOKEN_VALUE>"`
+    * In `config.yml` (do NOT commit token!)
 5. Run server: `coffee app.coffee`
 
 To locally simulate a GitHub post-receive hook, enter this in your terminal while running locally :
