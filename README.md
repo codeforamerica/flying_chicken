@@ -10,8 +10,8 @@
  
 ## Configuration and Deployment
 
-1. Run the follow to get a Github API Oath token: `curl -i -u "<USERNAME>:<PASS>" https://api.github.com/authorizations -d '{"scopes":["repo"]}'`
-2. You will get a JSON response; utilizing the token value run the following to set the Heroku value. `heroku config:add GITHUB_ACCESS_TOKEN=<TOKEN_VALUE>`
+1. Run the following to get a Github API Oath token: `curl -i -u "<USERNAME>:<PASS>" https://api.github.com/authorizations -d '{"scopes":["repo"]}'`
+2. You will get a JSON response; utilizing the token value, run the following to set the Heroku value. `heroku config:add GITHUB_ACCESS_TOKEN=<TOKEN_VALUE>`
 
 ## Run locally
 
